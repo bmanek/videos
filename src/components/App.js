@@ -6,12 +6,14 @@
 
  class App extends React.Component {
 
-   onTermSubmit = (term) => {
-     youtube.get('/search', {
+   onTermSubmit = async term => {
+     const response = await youtube.get('/search', {
        params: {
          q: term
        }
      })
+
+     console.log(response)
    }
 
    render() {
