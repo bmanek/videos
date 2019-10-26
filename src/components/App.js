@@ -1,6 +1,7 @@
  import React from 'react'
  import SearchBar from './SearchBar'
  import VideoList from './VideoList'
+ import VideoDetail from './VideoDetail'
  import youtube from '../apis/youtube'
 
  const API_KEY = process.env.REACT_APP_API_KEY
@@ -22,13 +23,14 @@
    }
 
    onVideoSelect = video => {
-     console.log("From the app!", video)
+     this.setState({ selectedVideo: video })
    }
 
    render() {
      return (
        <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
+        <VideoDetail video={this.state.selectedVideo} />
         <VideoList videos={this.state.videos}
           onVideoSelect={this.onVideoSelect} />
        </div>
