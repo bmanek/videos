@@ -12,6 +12,10 @@
      selectedVideo: null
    }
 
+   componentDidMount() {
+     this.onTermSubmit("computer repair")
+   }
+
    onTermSubmit = async term => {
      const response = await youtube.get('/search', {
        params: {
@@ -19,7 +23,10 @@
        }
      })
 
-     this.setState({ videos: response.data.items })
+     this.setState({
+       videos: response.data.items,
+       selectedVideo: response.data.items[0]
+     })
    }
 
    onVideoSelect = video => {
